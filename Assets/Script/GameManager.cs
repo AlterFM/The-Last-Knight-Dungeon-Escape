@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PlayMusic(MusicManager.instance.labyrinthMusic);
+        }
     }
 
     public void AddKey()

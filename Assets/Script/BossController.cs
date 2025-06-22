@@ -156,6 +156,11 @@ public class BossController : MonoBehaviour
         agent.isStopped = true;
         transform.LookAt(playerTarget); // Hadap pemain
 
+        if (MusicManager.instance != null && MusicManager.instance.bossAttackSound != null)
+        {
+            MusicManager.instance.PlaySFX(MusicManager.instance.bossAttackSound);
+        }
+
         int attackChoice = Random.Range(0, 2);
         if (attackChoice == 0) animator.SetTrigger("attack1");
         else animator.SetTrigger("attack2");

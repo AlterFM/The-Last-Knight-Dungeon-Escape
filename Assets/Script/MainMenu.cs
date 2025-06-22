@@ -9,7 +9,15 @@ public class MainMenu : MonoBehaviour
     public GameObject infoPanel;
     public GameObject menuPanel;
 
-    // --- Fungsi untuk Navigasi Scene ---
+    void Start()
+    {
+        // Pastikan ada MusicManager sebelum memanggilnya
+        if (MusicManager.instance != null)
+        {
+            // Perintahkan MusicManager untuk memutar klip musik menu
+            MusicManager.instance.PlayMusic(MusicManager.instance.mainMenuMusic);
+        }
+    }
 
     // Fungsi ini akan dipanggil saat ButtonStart diklik
     public void LoadMainGame()
@@ -29,7 +37,6 @@ public class MainMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         // Memuat scene dengan nama "MainMenu"
-        // Pastikan nama ini persis sama dengan nama file scene Anda di Build Settings
         SceneManager.LoadScene("MainMenu");
     }
 

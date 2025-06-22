@@ -5,13 +5,14 @@ public class WinSceneManager : MonoBehaviour
 {
     void Start()
     {
-        // Tampilkan kursor mouse
         Cursor.visible = true;
-
-        // Lepaskan kursor dari tengah layar (tidak terkunci)
         Cursor.lockState = CursorLockMode.None;
-
+        Time.timeScale = 1f;
         Debug.Log("Scene Win dimuat, kursor seharusnya terlihat dan tidak terkunci.");
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PlayMusic(MusicManager.instance.winMusic);
+        }
     }
 
     // Fungsi untuk ButtonRestart

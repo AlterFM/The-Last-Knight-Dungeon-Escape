@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12f;
     public float rotationSpeed = 15f;
 
+    [Header("Sound Settings")]
+    public float footstepInterval = 0.4f;
+    private float footstepTimer;
+
     [Header("Dash Settings")]
     public float dashForce = 25f;
     public float dashCooldown = 2f;
@@ -92,6 +96,22 @@ public class PlayerMovement : MonoBehaviour
             // Mulai sekuens serangan
             StartCoroutine(AttackSequence());
         }
+        if (isGrounded && moveDirection.magnitude > 0.1f)
+        {
+            // Hitung mundur timer
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0)
+            {
+                // Jika timer habis, mainkan suara langkah kaki
+                if (MusicManager.instance != null && MusicManager.instance.playerRunSound != null)
+                {
+                    MusicManager.instance.PlaySFX(MusicManager.instance.playerRunSound);
+                }
+
+                // Reset timer kembali ke interval awal
+                footstepTimer = footstepInterval;
+            }
+        }
 
         animator.SetFloat("speed", moveDirection.magnitude);
         animator.SetBool("isGrounded", isGrounded);
@@ -137,6 +157,10 @@ public class PlayerMovement : MonoBehaviour
         // 1. Tandai bahwa kita sedang menyerang untuk mencegah serangan beruntun (spam)
         //    dan untuk mengunci gerakan jika Anda mau.
         isAttacking = true;
+        if (MusicManager.instance != null && MusicManager.instance.playerAttackSound != null)
+        {
+            MusicManager.instance.PlaySFX(MusicManager.instance.playerAttackSound);
+        }
 
         // 2. Mainkan animasi serangan seperti biasa
         animator.SetTrigger("attackTrigger");
