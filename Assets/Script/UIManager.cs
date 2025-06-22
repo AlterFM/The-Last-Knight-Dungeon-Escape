@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public Slider xpSlider;
     public GameObject interactionPrompt;
+    public Slider playerHealthSlider;
 
     private void Awake()
     {
@@ -85,6 +86,17 @@ public class UIManager : MonoBehaviour
             {
                 xpSlider.value = 0;
             }
+        }
+    }
+
+    public void UpdatePlayerHealth(int currentHealth, int maxHealth)
+    {
+        if (playerHealthSlider != null)
+        {
+            // Atur nilai maksimum slider (hanya perlu sekali, tapi aman untuk ditaruh di sini)
+            playerHealthSlider.maxValue = maxHealth;
+            // Atur nilai saat ini
+            playerHealthSlider.value = currentHealth;
         }
     }
 

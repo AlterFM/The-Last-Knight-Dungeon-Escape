@@ -4,7 +4,9 @@ using UnityEngine.AI; // Diperlukan untuk mengakses NavMeshAgent
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 500;
-    public int xpToGive = 500; 
+    public int xpToGive = 500;
+
+    private EnemyUIController myUIController;
 
     private int currentHealth;
     private Animator animator;
@@ -15,6 +17,9 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
+        myUIController = GetComponentInChildren<EnemyUIController>();
+        UpdateHealthUI(); // Update UI di awal permainan
     }
 
     public void TakeDamage(int damage)
@@ -25,6 +30,8 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
         Debug.Log(gameObject.name + " took " + damage + " damage. Health is now " + currentHealth);
 
+        UpdateHealthUI();
+
         // Panggil trigger ketika terkena hit
         if (animator != null)
         {
@@ -34,6 +41,14 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    void UpdateHealthUI()
+    {
+        if (myUIController != null)
+        {
+            myUIController.UpdateHealth(currentHealth, maxHealth);
         }
     }
 
@@ -53,18 +68,18 @@ public class EnemyHealth : MonoBehaviour
         {
             animator.SetTrigger("isDead");
         }
+        if (myUIController != null)
+        {
+            myUIController.gameObject.SetActive(false);
+        }
 
         // Matikan kemampuan AI untuk bergerak
         if (agent != null)
         {
             agent.enabled = false;
         }
-
-
-
         // Matikan collider agar tidak bisa diserang/menabrak lagi
         GetComponent<Collider>().enabled = false;
-
         // Hancurkan objek musuh setelah 3 detik untuk memberi waktu animasi kematian
         Destroy(gameObject, 3f);
     }
