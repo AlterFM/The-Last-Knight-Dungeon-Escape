@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
             // Perintahkan MusicManager untuk memutar klip musik menu
             MusicManager.instance.PlayMusic(MusicManager.instance.mainMenuMusic);
         }
+
     }
 
     // Fungsi ini akan dipanggil saat ButtonStart diklik

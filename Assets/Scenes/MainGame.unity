@@ -2802,6 +2802,7 @@ GameObject:
   - component: {fileID: 456865882}
   - component: {fileID: 456865881}
   - component: {fileID: 456865883}
+  - component: {fileID: 456865884}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2822,7 +2823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keysFound: 0
-  keysNeededPerLevel: 0100000001000000
+  keysNeededPerLevel: 0500000004000000
   currentKeysToWin: 0
   levelSceneNames:
   - MainGame
@@ -2863,6 +2864,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 71471386}
+--- !u!114 &456865884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456865880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a947b17abfcb774884fdd24cd7cef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523837009
 GameObject:
   m_ObjectHideFlags: 0
@@ -10414,7 +10427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.28
+      value: -33.5
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10422,7 +10435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -165.9
+      value: -72.5
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalRotation.w
