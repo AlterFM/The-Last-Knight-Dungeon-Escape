@@ -471,10 +471,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2109835180065779207}
   - component: {fileID: 6190530824172203193}
+  - component: {fileID: 9182862323581907427}
   - component: {fileID: 8762681733027665150}
   - component: {fileID: 1506812317808588241}
   - component: {fileID: 8175648111682198160}
-  - component: {fileID: 9182862323581907427}
   - component: {fileID: 4478532509636936024}
   m_Layer: 0
   m_Name: Knight
@@ -532,6 +532,29 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 2
+--- !u!136 &9182862323581907427
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555350528883912358}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.49997902
+  m_Height: 2.4360743
+  m_Direction: 1
+  m_Center: {x: -0.000020980835, y: 1.2023138, z: 0}
 --- !u!114 &8762681733027665150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +569,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   jumpForce: 500
+  rotationSpeed: 15
+  footstepInterval: 0.4
+  dashForce: 25
+  dashCooldown: 2
+  groundCheck: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundDistance: 0.2
+  swordHitbox: {fileID: 0}
+  attackDelay: 0.3
+  attackActiveTime: 0.2
 --- !u!95 &1506812317808588241
 Animator:
   serializedVersion: 7
@@ -580,30 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f09dd742555141a3f50f308287eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPromptUI: {fileID: 0}
---- !u!136 &9182862323581907427
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555350528883912358}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.49997902
-  m_Height: 2.4360743
-  m_Direction: 1
-  m_Center: {x: -0.000020980835, y: 1.2023138, z: 0}
 --- !u!114 &4478532509636936024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8957f3812876a4dbf09c66abbd84b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  maxHealth: 100
 --- !u!1 &559564981774169366
 GameObject:
   m_ObjectHideFlags: 0

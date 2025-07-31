@@ -4,7 +4,6 @@ using System.Collections;
 
 public class BossController : MonoBehaviour
 {
-    // Tambahkan 'Idle' ke dalam state AI
     public enum AIState { Idle, Patrolling, Chasing, Attacking }
 
     [Header("AI Settings")]
@@ -17,7 +16,6 @@ public class BossController : MonoBehaviour
 
     [Header("Combat Settings")]
     public float attackCooldown = 3f;
-    // Hapus attackRange, kita akan gunakan stoppingDistance dari NavMeshAgent
     public GameObject weaponHitbox;
 
     [Header("Attack Timing")]
@@ -27,7 +25,7 @@ public class BossController : MonoBehaviour
     // Variabel Privat
     private NavMeshAgent agent;
     private Animator animator;
-    private float stateTimer; // Timer serbaguna untuk idle dan cooldown
+    private float stateTimer; // Timer untuk idle dan cooldown
     private int currentPointIndex = 0;
     private bool isCurrentlyAttacking = false;
 
@@ -56,7 +54,7 @@ public class BossController : MonoBehaviour
         if (playerTarget != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
-            // Gunakan stoppingDistance dari NavMeshAgent sebagai referensi jarak serangan
+            // stoppingDistance dari NavMeshAgent sebagai referensi jarak serangan
             if (distanceToPlayer <= agent.stoppingDistance)
             {
                 currentState = AIState.Attacking;
@@ -68,7 +66,7 @@ public class BossController : MonoBehaviour
         }
         else
         {
-            // Jika tidak ada target, AI harus dalam kondisi Idle atau Patrolling
+            // Idle / Patrolling ketika tidak ada target
             if (currentState == AIState.Chasing || currentState == AIState.Attacking)
             {
                 currentState = AIState.Idle;
@@ -103,8 +101,6 @@ public class BossController : MonoBehaviour
             animator.SetFloat("speed", agent.velocity.magnitude);
         }
     }
-
-    // --- FUNGSI-FUNGSI LOGIKA STATE ---
 
     void Idle()
     {

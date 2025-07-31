@@ -1,20 +1,19 @@
 using UnityEngine;
-using UnityEngine.AI; // Pastikan ini ada
+using UnityEngine.AI; 
 
 public class EnemyPatrol : MonoBehaviour
 {
-    // Mendefinisikan state yang bisa dimiliki oleh AI
     public enum AIState { Patrolling, Chasing }
 
     [Header("Patrol Settings")]
     public Transform[] patrolPoints;
 
     [Header("AI Settings")]
-    public AIState currentState = AIState.Patrolling; // State awal musuh
+    public AIState currentState = AIState.Patrolling; 
 
     private NavMeshAgent agent;
     private Animator animator;
-    private Transform playerTarget; // Untuk menyimpan referensi ke transform pemain
+    private Transform playerTarget; 
     private int currentPointIndex = 0;
 
     void Start()
@@ -63,7 +62,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void ChasePlayer()
     {
-        // Jika target pemain ada, kejar terus posisinya
+        // Mengejar ke lokasi pemain yang ditargetkan
         if (playerTarget != null)
         {
             agent.SetDestination(playerTarget.position);
@@ -71,7 +70,6 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     // --- LOGIKA PENDETEKSI PEMAIN ---
-
     public void StartChasing(Transform player)
     {
         Debug.LogWarning("AI Brain received command to CHASE " + player.name);
@@ -85,21 +83,17 @@ public class EnemyPatrol : MonoBehaviour
         playerTarget = null;
         currentState = AIState.Patrolling;
     }
-    public int damageAmount = 200; // Angka 999 adalah cara mudah untuk 'instant kill'.
+    public int damageAmount = 200; 
 
-    // Fungsi ini akan berjalan secara otomatis saat collider objek ini
-    // BERSENTUHAN FISIK dengan collider objek lain.
+    // Collider bertabrakan dengan pemain
     private void OnCollisionEnter(Collision collision)
     {
-        // Pertama, kita cek apakah objek yang kita tabrak memiliki tag "Player".
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log(gameObject.name + " collided with the Player!");
 
-            // Kedua, kita coba ambil komponen PlayerHealth dari objek Player yang kita tabrak.
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-            // Ketiga, jika komponen PlayerHealth berhasil ditemukan...
             if (playerHealth != null)
             {
                 // ...panggil fungsinya untuk memberikan damage.

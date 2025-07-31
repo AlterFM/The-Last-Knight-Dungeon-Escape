@@ -40,7 +40,7 @@ public class MusicManager : MonoBehaviour
         }
 
         musicSource.clip = musicClip;
-        musicSource.loop = true; // Musik harus berulang
+        musicSource.loop = true; 
         musicSource.Play();
     }
 

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71471384}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2834,7 +2834,6 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 12
   hasUnlockedDoubleJump: 0
-  hasUnlockedDash: 0
   bigGateController: {fileID: 712661880}
 --- !u!4 &456865882
 Transform:
@@ -2858,7 +2857,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456865880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2522b16c631da6844b17675fde4ea065, type: 3}
   m_Name: 
@@ -3724,9 +3723,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1369184441196170530, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9218744784979820800, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4552,9 +4559,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84a3e91d22cbbd9478eb74afedb59b69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1357765369}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84a3e91d22cbbd9478eb74afedb59b69, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1357765370}
   m_SourcePrefab: {fileID: 100100000, guid: 84a3e91d22cbbd9478eb74afedb59b69, type: 3}
 --- !u!1 &802332794
 GameObject:
@@ -6745,26 +6749,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1000001, y: 0.0966546, z: 2}
   m_Center: {x: 1.3000001, y: -0.051672727, z: -0.25}
---- !u!154 &1357765370
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357765365}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 0}
-  m_EnableTreeColliders: 1
 --- !u!1 &1358563293
 GameObject:
   m_ObjectHideFlags: 0
@@ -8201,6 +8185,7 @@ MonoBehaviour:
   distance: 15
   xSpeed: 700
   ySpeed: 700
+  heightOffset: 1.5
 --- !u!81 &1597387437
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8804,7 +8789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1764556690
 Transform:
   m_ObjectHideFlags: 0
@@ -9042,7 +9027,7 @@ Transform:
   m_GameObject: {fileID: 1880671293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.002, z: 0}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9759,6 +9744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Minion (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9218744784979820800, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.8
@@ -9972,6 +9961,10 @@ PrefabInstance:
     - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9218744784979820800, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10435,7 +10428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.5
+      value: -57.69
       objectReference: {fileID: 0}
     - target: {fileID: 2109835180065779207, guid: 63eeb400ef1b6494db6150e4b254885d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10859,6 +10852,10 @@ PrefabInstance:
     - target: {fileID: 6679173673769824875, guid: 43845e8d09b3d4546a15c4f02cefb87e, type: 3}
       propertyPath: m_Name
       value: DoorHinge
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679173673769824875, guid: 43845e8d09b3d4546a15c4f02cefb87e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7406716631338169652, guid: 43845e8d09b3d4546a15c4f02cefb87e, type: 3}
       propertyPath: m_LocalPosition.x

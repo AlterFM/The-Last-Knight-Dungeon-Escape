@@ -12,10 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float footstepInterval = 0.4f;
     private float footstepTimer;
 
-    [Header("Dash Settings")]
-    public float dashForce = 25f;
-    public float dashCooldown = 2f;
-
     [Header("Ground Check Settings")]
     public Transform groundCheck;
     public LayerMask groundMask;
@@ -26,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public float attackDelay = 0.3f;     
     public float attackActiveTime = 0.2f;
 
-    // Komponen dan Variabel Privat
     private Rigidbody rb;
     private Animator animator;
     private Camera mainCamera;
@@ -36,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool jumpRequested;
     private bool hasDoubleJumped;
-    private bool isDashRequested;
-    private float dashCooldownTimer;
     private bool isAttacking = false;
 
     private void Start()
@@ -82,15 +75,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (dashCooldownTimer > 0)
-        {
-            dashCooldownTimer -= Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0 && GameManager.instance != null && GameManager.instance.hasUnlockedDash)
-        {
-            isDashRequested = true;
-        }
         if (Input.GetMouseButtonDown(0) && isGrounded && !isAttacking)
         {
             // Mulai sekuens serangan
@@ -107,12 +91,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     MusicManager.instance.PlaySFX(MusicManager.instance.playerRunSound);
                 }
-
                 // Reset timer kembali ke interval awal
                 footstepTimer = footstepInterval;
             }
         }
-
         animator.SetFloat("speed", moveDirection.magnitude);
         animator.SetBool("isGrounded", isGrounded);
     }
@@ -134,21 +116,6 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("jumpTrigger");
             jumpRequested = false;
-
-        }
-
-        if (isDashRequested)
-        {
-            Vector3 dashDirection = moveDirection;
-            if (dashDirection == Vector3.zero)
-            {
-                dashDirection = transform.forward;
-            }
-
-            rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-            dashCooldownTimer = dashCooldown;
-            isDashRequested = false;
-            animator.SetTrigger("dashTrigger");
         }
     }
 
@@ -161,30 +128,19 @@ public class PlayerMovement : MonoBehaviour
         {
             MusicManager.instance.PlaySFX(MusicManager.instance.playerAttackSound);
         }
-
         // 2. Mainkan animasi serangan seperti biasa
         animator.SetTrigger("attackTrigger");
-
         // 3. Tunggu sebentar sesuai attackDelay (memberi waktu untuk animasi memulai ayunan)
         yield return new WaitForSeconds(attackDelay);
-
         // 4. Aktifkan hitbox di tengah ayunan
         Debug.Log("Hitbox Enabled!");
         if (swordHitbox != null) swordHitbox.SetActive(true);
-
         // 5. Biarkan hitbox aktif selama durasi serangan
         yield return new WaitForSeconds(attackActiveTime);
-
         // 6. Matikan kembali hitbox setelah ayunan selesai
         Debug.Log("Hitbox Disabled!");
         if (swordHitbox != null) swordHitbox.SetActive(false);
-
         // 7. Tandai bahwa kita sudah selesai menyerang dan bisa menyerang lagi/bergerak lagi
         isAttacking = false;
     }
-
-
-
-
-
 }

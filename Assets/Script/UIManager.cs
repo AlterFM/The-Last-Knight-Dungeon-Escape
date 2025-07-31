@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement; // <-- PASTIKAN INI ADA
+using UnityEngine.SceneManagement; 
 
 public class UIManager : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     // Fungsi ini berjalan setiap kali objek UIManager dinonaktifkan/dihancurkan
     private void OnDisable()
     {
-        // Berhenti mendengarkan untuk mencegah error dan kebocoran memori
+        // Berhenti mendengarkan 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -45,10 +45,8 @@ public class UIManager : MonoBehaviour
         Debug.LogWarning("UIManager detected scene loaded: " + scene.name);
         if (scene.name == "MainGame" || scene.name == "Arena2")
         {
-            // Suruh GameManager untuk setup level baru
             GameManager.instance.SetupLevel();
         }
-        // Panggil fungsi untuk me-refresh semua elemen UI dengan data terbaru
         UpdateAllUI();
     }
 
@@ -93,7 +91,7 @@ public class UIManager : MonoBehaviour
     {
         if (playerHealthSlider != null)
         {
-            // Atur nilai maksimum slider (hanya perlu sekali, tapi aman untuk ditaruh di sini)
+            // Atur nilai maksimum slider 
             playerHealthSlider.maxValue = maxHealth;
             // Atur nilai saat ini
             playerHealthSlider.value = currentHealth;

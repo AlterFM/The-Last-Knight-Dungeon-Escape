@@ -1,4 +1,3 @@
-// GameManager.cs
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -10,23 +9,21 @@ public class GameManager : MonoBehaviour
     public int[] keysNeededPerLevel = { 5, 4 };
     [HideInInspector] public int currentKeysToWin;
 
-    [Header("Level Management")] // Header ini akan membuat judul di Inspector agar rapi
-    public List<string> levelSceneNames; // Daftar untuk menyimpan nama-nama scene level Anda
-    private int currentLevelIndex = 0;   // Untuk melacak di level mana pemain saat ini (dimulai dari 0)
+    [Header("Level Management")] 
+    public List<string> levelSceneNames; // Daftar untuk menyimpan nama-nama scene level 
+    private int currentLevelIndex = 0;  
 
     [Header("Player Stats")]
     public int playerLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 1000;
-    public float moveSpeed = 8f; // Kecepatan awal
-    public float jumpForce = 12f; // Kekuatan lompat awal
+    public float moveSpeed = 8f; 
+    public float jumpForce = 12f;
 
     [Header("Player Abilities")]
     public bool hasUnlockedDoubleJump = false;
-    public bool hasUnlockedDash = false;
 
-    public DoorController bigGateController; // Drag your Big Gate here in the Inspector
-
+    public DoorController bigGateController;
 
     private void Awake()
     {
@@ -50,10 +47,8 @@ public class GameManager : MonoBehaviour
     {
         keysFound++;
         Debug.Log("Keys: " + keysFound + "/" + currentKeysToWin);
-
         // Update the UI here (see next step)
         UIManager.instance.UpdateKeyCount(keysFound, currentKeysToWin);
-
         // Check if the player has won
         if (keysFound >= currentKeysToWin)
         {
@@ -65,13 +60,11 @@ public class GameManager : MonoBehaviour
     {
         currentXP += xpAmount;
         Debug.Log("Gained " + xpAmount + " XP. Total XP: " + currentXP + "/" + xpToNextLevel);
-
         // Panggil UIManager untuk memperbarui tampilan UI (XP Bar, dll)
         if (UIManager.instance != null)
         {
             UIManager.instance.UpdateXPUI(currentXP, xpToNextLevel);
         }
-
         // Cek apakah XP sudah cukup untuk naik level
         if (currentXP >= xpToNextLevel)
         {
@@ -93,12 +86,6 @@ public class GameManager : MonoBehaviour
         {
             hasUnlockedDoubleJump = true;
             Debug.LogWarning("ABILITY UNLOCKED: DOUBLE JUMP!");
-        }
-
-        if (playerLevel >= 5 && !hasUnlockedDash)
-        {
-            hasUnlockedDash = true;
-            Debug.LogWarning("ABILITY UNLOCKED: DASH!");
         }
 
         if (UIManager.instance != null)
@@ -131,7 +118,6 @@ public class GameManager : MonoBehaviour
     void OpenTheGate()
     {
         Debug.Log("The gate is opening!"); 
-        // Make sure the controller is assigned before trying to use it
         if (bigGateController != null)
         {
             bigGateController.OpenDoor();
