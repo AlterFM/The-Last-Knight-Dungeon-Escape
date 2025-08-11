@@ -3727,6 +3727,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (8)
@@ -9740,6 +9752,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (10)
@@ -9957,6 +9977,14 @@ PrefabInstance:
     - target: {fileID: 1369184441196170530, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068646558549715633, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8404947418927684538, guid: 7ad2a564a1e7dc840a3effbdee493074, type: 3}
       propertyPath: m_Name
@@ -10712,7 +10740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.6229975, b: 0.6229975, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

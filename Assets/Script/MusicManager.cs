@@ -16,6 +16,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip playerAttackSound;
     public AudioClip bossAttackSound;
     public AudioClip playerRunSound;
+    public AudioClip keyCollectSound;
 
     private void Awake()
     {

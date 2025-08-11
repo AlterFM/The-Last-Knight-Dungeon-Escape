@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79707c1276224e84e94ba8fe42f7eca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 180
+  spinSpeed: 300
   floatSpeed: 0.5
   floatHeight: 0.5

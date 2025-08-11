@@ -13,8 +13,8 @@ public class KeyVisual : MonoBehaviour
         // Remember the starting height of the key
         this.startY = transform.position.y;
 
-        // IMPORTANT: This tells the key to destroy itself after 3 seconds.
-        Destroy(gameObject, 4.0f);
+        // IMPORTANT: This tells the key to destroy itself after seconds.
+        Destroy(gameObject, 2.0f);
     }
 
     void Update()

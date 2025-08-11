@@ -1331,6 +1331,7 @@ MonoBehaviour:
   playerAttackSound: {fileID: 8300000, guid: 84cbd593c657c6f45bbe07166bf892e0, type: 3}
   bossAttackSound: {fileID: 8300000, guid: 773f3e804b98fde4fae44a934989f1c3, type: 3}
   playerRunSound: {fileID: 8300000, guid: 98a7dd2e247b35f4c9e4cfd1a6ca5f10, type: 3}
+  keyCollectSound: {fileID: 8300000, guid: 7b5283f8bacafac4eb7c5b0e7bc69ac6, type: 3}
 --- !u!4 &1596918154
 Transform:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class ChestController : MonoBehaviour
     public bool isOpened = false;
 
     // A variable to hold the chest's animator component, so we can tell it to play animations.
-    // You would need to create an Animator Controller for this to work.
+    // Animator Controller for this to work.
     public Animator animator;
     public GameObject keyVisualPrefab;
     public Transform keySpawnPoint; // Untuk menampung titik spawn kita
@@ -21,8 +21,13 @@ public class ChestController : MonoBehaviour
             GameManager.instance.AddKey();
             GameManager.instance.GainXP(200);
 
-            // PASTIKAN BARIS INI ADA:
-            // Dan pastikan variabel 'keyVisualPrefab' sudah dideklarasikan di atas.
+            // --- Sound Effect saat kunci didapatkan ---
+            if (MusicManager.instance != null && MusicManager.instance.keyCollectSound != null)
+            {
+                // Perintahkan MusicManager untuk memainkan SFX kunci
+                MusicManager.instance.PlaySFX(MusicManager.instance.keyCollectSound);
+            }
+
             if (keyVisualPrefab != null)
             {
                 Instantiate(keyVisualPrefab, keySpawnPoint.position, keySpawnPoint.rotation);
